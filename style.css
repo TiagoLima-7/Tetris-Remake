@@ -1,0 +1,228 @@
+@font-face {
+    font-family: Tetris;
+    src: url(./fonts/Tetris.ttf);
+}
+
+@font-face{
+    font-family: Dimitri;
+    src: url(./fonts/Dimis.ttf);
+}
+
+@font-face{
+    font-family: Rubik;
+    src: url(./fonts/RubikDoodleShadow-Regular.ttf);
+}
+
+
+
+:root{
+    --red: linear-gradient(-25deg, rgb(121 75 75) 0%, rgb(255 0 0) 35%, rgb(255 255 255) 100%);
+    --blue: linear-gradient(-25deg, rgb(81 53 2) 0%, rgb(255 153 0) 35%, rgb(211 203 190) 100%);
+    --green: linear-gradient(-25deg, rgba(7,0,120,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    --orange: linear-gradient(-25deg, rgb(8 53 3) 0%, rgb(63 255 0) 35%, rgb(194 211 190) 100%);
+    --pink: linear-gradient(-25deg, rgb(31 2 39) 0%, rgb(110 9 121) 35%, rgb(204 136 211) 100%);
+    --purple: linear-gradient(-25deg, rgb(99 89 0) 0%, #FFEB3B 35%, rgb(203 193 106) 100%);
+    --skyblue: linear-gradient(-25deg, rgb(105 0 36) 0%, #E91E63 35%, rgb(255 141 180) 100%);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(180deg, rgba(63,94,251,1) 0%, rgba(143,161,255,1) 100%);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-bg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    overflow: hidden;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: -1;
+}
+
+
+h1{
+    font-family: RubikTriangles;
+    text-align: center;
+    font-size: 75px;
+    text-transform: uppercase;
+    font-weight: 400;
+
+    color: #FF5161;
+
+    /* -webkit-text-stroke: 1px red; */
+    /* box-shadow: 0 0 50px #D30302 ; */
+}
+    
+h1 span:nth-child(1){
+    color: red; 
+}
+h1 span:nth-child(2){
+    color: blue;
+}
+h1 span:nth-child(3){
+    color: green;
+}
+h1 span:nth-child(4){
+    color: yellow;
+}
+h1 span:nth-child(5){
+    color: purple;
+}
+h1 span:nth-child(6){
+    color: orange;
+} 
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+
+    height: 815px;
+
+    margin: 0 auto;
+}
+
+.grid{
+    width: 400px;
+    height: 800px;
+
+    background:linear-gradient(125deg, rgba(46, 44, 45, 1), rgba(66, 64, 67, 1)) ;
+    box-shadow: 11px 11px 22px #141414,
+                -11px -11px 22px #525252 ;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 12px;
+}
+
+.grid div{
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.panel{
+    height: 800px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 25px;
+
+    background:linear-gradient(125deg, rgba(46, 44, 45, 1), rgba(66, 64, 67, 1)) ;
+    box-shadow: 11px 11px 22px #141414,
+                -11px -11px 22px #525252 ;
+                border-radius: 24px;
+
+}
+
+
+
+.next{
+    width: 160px;
+    height: 160px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.next div{
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.panel p,
+.score p,
+.lignes p,
+.level p{
+    font-size: 24px;
+    font-weight: 100;
+    /* font-family: Dimitri; */
+    font-family: 'Press Start 2P', system-ui;
+    color:darkorange;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.panel p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.startBtn{
+    position: relative;
+    outline: none;
+    border: 4px solid #090909;
+    background: linear-gradient(145deg, #171717, #444245);
+    box-shadow: inset 2px 2px 0 #7d7c7e,
+                inset -2px -2px 0 #1c1c1c;
+                color: wheat;
+    width: 7em;
+    height: 7em;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.startBtn:hover{
+    color: skyblue;
+}
+
+.startBtn:active{
+    color: darkorange;
+}
+
+.startBtn::before{
+    content: '';
+    position: absolute;
+    width: 7.25em;
+    height: 7.25em;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: inherit;
+    background: linear-gradient(145deg, #262626, #606060);
+    box-shadow: 11px 11px 22px #141414,
+                -11px -11px 22px #525252;
+    z-index: -1;
+}
+
+.startBtn i{
+    font-size: 3em;
+}
+
+
+.none{
+    display: none;
+}
+
+.row-complete {
+    animation: rowComplete 300ms ease;
+}
+
+@keyframes rowComplete {
+    from {
+        background-color: rgba(0, 255, 0, 0.7);
+    }
+    to {
+        background-color: transparent;
+    }
+}
